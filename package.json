@@ -1,13 +1,10 @@
 {
   "name": "cordova-plugin-screen-orientation",
-  "version": "3.0.2-dev",
+  "version": "3.0.2",
   "description": "Cordova Screen Orientation plugin",
   "repository": {
     "type": "git",
-    "url": "https://github.com/apache/cordova-plugin-screen-orientation"
-  },
-  "bugs": {
-    "url": "https://issues.apache.org/jira/browse/CB"
+    "url": "https://github.com/codevise/cordova-plugin-screen-orientation"
   },
   "scripts": {
     "test": "npm run jshint",
@@ -33,7 +30,7 @@
     "portrait",
     "landscape"
   ],
-  "author": "Apache Software Foundation",
+  "author": "Codevise Solutions",
   "license": "Apache-2.0",
   "devDependencies": {
     "jshint": "^2.9.4"
