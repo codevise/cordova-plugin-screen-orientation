@@ -39,13 +39,22 @@ static UIInterfaceOrientationMask _allowedOrientations = UIInterfaceOrientationM
     [self.commandDelegate runInBackground:^{
         NSArray* arguments = command.arguments;
         NSString* orientation = [arguments objectAtIndex:1];
+        UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
+        UIInterfaceOrientation forcedOrientation = UIInterfaceOrientationUnknown;
 
         if ([orientation rangeOfString:@"portrait"].location != NSNotFound) {
           _allowedOrientations = UIInterfaceOrientationMaskPortrait;
+            forcedOrientation = UIInterfaceOrientationPortrait;
         } else if([orientation rangeOfString:@"landscape"].location != NSNotFound) {
           _allowedOrientations = UIInterfaceOrientationMaskLandscape;
+            forcedOrientation = UIInterfaceOrientationLandscapeLeft;
         } else {
           _allowedOrientations = UIInterfaceOrientationMaskAll;
+        }
+        if (forcedOrientation != UIInterfaceOrientationUnknown && forcedOrientation != currentOrientation) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+                [[UIDevice currentDevice] setValue:[NSNumber numberWithInt:UIInterfaceOrientationPortrait] forKey:@"orientation"];
+            }];
         }
     }];
 }
