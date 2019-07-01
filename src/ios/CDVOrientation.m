@@ -53,7 +53,7 @@ static UIInterfaceOrientationMask _allowedOrientations = UIInterfaceOrientationM
         }
         if (forcedOrientation != UIInterfaceOrientationUnknown && forcedOrientation != currentOrientation) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
-                [[UIDevice currentDevice] setValue:[NSNumber numberWithInt:UIInterfaceOrientationPortrait] forKey:@"orientation"];
+                [[UIDevice currentDevice] setValue:[NSNumber numberWithInt:forcedOrientation] forKey:@"orientation"];
             }];
         }
     }];
